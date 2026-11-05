@@ -10,7 +10,7 @@
 /* One 16:9 game stage + HTML cards on top. Deliberate single bright "police station" look, explicit backgrounds. */
 :root{--navy:#12306b;--blue:#2f6fde;--red:#ff3b4f;--sun:#ffd23f;--paper:#fffdf6;--ink:#14213d;--mint:#5fd38d;
  --fd:"Secular One","Noto Sans Hebrew",system-ui,sans-serif;--fb:"Noto Sans Hebrew",system-ui,sans-serif;color-scheme:light}
-html,body{height:100%}
+html,body{height:100%}html,body{margin:0;overflow:hidden;overscroll-behavior:none}*{scrollbar-width:thin;scrollbar-color:rgba(120,150,200,.7) transparent}::-webkit-scrollbar{width:7px;height:0}::-webkit-scrollbar-button{display:none;width:0;height:0}::-webkit-scrollbar-thumb{background:rgba(120,150,200,.7);border-radius:8px}::-webkit-scrollbar-track{background:transparent}
 body{margin:0;background:radial-gradient(circle at 50% 0%,#1f4fa8 0%,var(--navy) 70%);color:var(--ink);font-family:var(--fb);direction:rtl;
  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px;box-sizing:border-box;overflow:hidden}
 [hidden]{display:none!important}
