@@ -196,7 +196,7 @@ function card(html,mode){ov.classList.toggle('side',mode==='side');ov.innerHTML=
 function closeCard(){ov.innerHTML='';ov.classList.remove('side');}
 ov.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;ac();sfx.click();const f=ACT[b.dataset.a];if(f)f(b.dataset.v);});
 function ctl(left,right){left=left||'';right=right||'';if(SET.hand==='r'){right=left+right;left='';}else if(SET.hand==='l'){left=left+right;right='';}ctlL.innerHTML=left;ctlR.innerHTML=right;ctlL.hidden=!left;ctlR.hidden=!right;document.getElementById('stage').classList.toggle('bigc',SET.big||kidAg()===0);}
-function topBar(inGame){topb.innerHTML=inGame?'<button data-t="slow" id="bSlow" aria-label="לאט">🐢</button><button data-t="pause" aria-label="הפסקה">⏸️</button><button data-t="home" aria-label="לתחנה">🏠</button>':`<button data-t="mus" aria-label="מוזיקה">${SET.music?'🎵':'🎵✖'}</button><button data-t="mute" aria-label="צליל">${muted?'🔇':'🔊'}</button>`;}
+function topBar(inGame){topb.innerHTML=inGame?'<button data-t="slow" id="bSlow" aria-label="לאט">🚶</button><button data-t="pause" aria-label="הפסקה">⏸️</button><button data-t="home" aria-label="לתחנה">🏠</button>':`<button data-t="mus" aria-label="מוזיקה">${SET.music?'🎵':'🎵✖'}</button><button data-t="mute" aria-label="צליל">${muted?'🔇':'🔊'}</button>`;}
 topb.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ac();const t=b.dataset.t;if(t==='home'){sfx.click();toStation();}if(t==='pause'){pauseGame();}if(t==='slow'&&G&&G.slowCd<=0){G.slow=6;G.slowCd=16;G.idle=0;tone(300,.3,'sine',.06,0,150);}if(t==='mus'){SET.music=!SET.music;save();topBar(scene!=='station'&&scene!=='done');}if(t==='mute'){muted=!muted;topBar(scene!=='station'&&scene!=='done');}});
 const KEYS={};
 addEventListener('keydown',e=>{ac();if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space'].includes(e.code)&&G&&!ov.innerHTML)e.preventDefault();if(!KEYS[e.code]){KEYS[e.code]=true;if(G)G.idle=0;if(e.code==='Escape'||e.code==='KeyP'){pauseGame();return;}if(!ov.innerHTML&&G)onKey(e.code);}});
@@ -618,7 +618,7 @@ function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;T+=dt;yb.t=M
  if(G&&G.shake>0){G.shake=Math.max(0,G.shake-dt);const sh=LOWFX()?0:G.shake*20;if(sh)ctx.translate((Math.random()-.5)*sh,(Math.random()-.5)*sh);}
  if(scene==='intro')drawIntro(dt);else if(G&&DRAW[G.id]&&(scene===G.id||scene==='done'))DRAW[G.id]();else drawStation(dt);
  drawFx();
- if(G&&scene===G.id){ctx.setTransform(DPR,0,0,DPR,0,0);if(G.slow>0){ctx.fillStyle='rgba(120,200,255,.12)';ctx.fillRect(0,0,W,H);em('🐢',W/2,H-16,30);}
+ if(G&&scene===G.id){ctx.setTransform(DPR,0,0,DPR,0,0);if(G.slow>0){ctx.fillStyle='rgba(120,200,255,.12)';ctx.fillRect(0,0,W,H);em('🚶',W/2,H-16,30);}
   if(G.demo>0&&DEMO[scene]){const p=DEMO[scene](G,G.demoT);if(p)drawHand(p[0],p[1],G.demoT);}
   else if(!ov.innerHTML&&HINT[scene]&&G.idle>[3,5,7][CUR.ag]){const p=HINT[scene](G);if(p)drawHand(p[0],p[1],T);}}
  requestAnimationFrame(frame);}
